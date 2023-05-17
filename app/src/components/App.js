@@ -15,7 +15,6 @@ function App() {
             path="/gender"
             element={<CatalogSelect></CatalogSelect>}
           ></Route>
-
           <Route
             path="/catalog"
             element={<CatalogContent></CatalogContent>}

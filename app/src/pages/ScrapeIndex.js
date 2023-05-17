@@ -8,10 +8,12 @@ import GSLOGO from "../resrc/GSLOGO.png";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ScrapeLoader from "../components/ScrapeLoader";
 import StoreInput from "../components/StoreInput";
+import Modal from "../components/Modal";
 function ScrapeIndex() {
   const btnRef = useRef();
   const [loader, setLoader] = useState(false);
   const [isDisable, setActive] = useState(false);
+  const [toggle, setToggle] = useState(false);
   let inputArray = [
     { val: 0, img: MTLOGO },
     { val: 1, img: TILOGO },
@@ -31,8 +33,13 @@ function ScrapeIndex() {
     storeIndex = event.target.value;
   };
 
+  const toggleMod = (e) => {
+    e.preventDefault();
+    setToggle(true);
+  };
   const clearDB = (e) => {
     e.preventDefault();
+    setToggle(false);
     setTimeout(function () {
       window.location.reload(false);
       setActive(false);
@@ -94,11 +101,18 @@ function ScrapeIndex() {
               </div>
             </div>
           </form>
-          <form onSubmit={clearDB} className="btn-container clear">
+          <form onSubmit={toggleMod} className="btn-container clear">
             <button className="clear-btn" ref={btnRef} disabled={isDisable}>
               Clear Database
             </button>
           </form>
+          {toggle ? (
+            <div className="d-flex justify-content-center align-items-center">
+              <Modal toggled={setToggle} cleared={clearDB}></Modal>
+            </div>
+          ) : (
+            ""
+          )}
         </>
       ) : (
         <ScrapeLoader></ScrapeLoader>
