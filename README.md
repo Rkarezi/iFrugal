@@ -12,9 +12,10 @@ iFrugal eliminates the countless tabs open when searching for the best prices as
 
 Copy the repo `git clone https://github.com/Rkarezi/iFrugal.git`
 
-## node modules
+## install files
 
 Install the modules `npm install`
+Install forever module `npm install forever -g`
 
 ## Running
 
